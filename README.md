@@ -32,3 +32,9 @@ Conforme solicitado nos requisitos, a chave escolhida para a indexação na Árv
 
 ```bash
 ./gradlew run --console=plain -q
+```
+
+## Autores
+
+- Arthur De Almeida
+- Ali Ahmad
