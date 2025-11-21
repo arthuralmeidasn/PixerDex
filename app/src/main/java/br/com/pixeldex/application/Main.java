@@ -23,7 +23,6 @@ public class Main {
             String line = scanner.nextLine().trim();
             if (line.isEmpty()) continue;
 
-            // Separa o comando dos argumentos
             String[] parts = line.split("\\s+");
             String command = parts[0].toUpperCase();
 
@@ -39,7 +38,6 @@ public class Main {
                         break;
 
                     case "ADD":
-                        // ADD <id> <nome> <raridade> <poder>
                         if (parts.length < 5) {
                             System.out.println("Erro: Uso incorreto. Tente: ADD <id> <nome> <raridade> <poder>");
                         } else {
@@ -59,7 +57,7 @@ public class Main {
 
                     case "LIST":
                         if (lista.isEmpty()) {
-                            System.out.println("Coleção vazia.");
+                            System.out.println("Colecao vazia.");
                         } else {
                             int index = 0;
                             for (Pixel p : lista) {
@@ -68,21 +66,18 @@ public class Main {
                         }
                         break;
 
-                    // --- NOVOS COMANDOS INTEGRADOS ---
-
                     case "FIND":
                         if (parts.length < 2) {
                             System.out.println("Uso: FIND <nome>");
                         } else {
                             String nomeBusca = parts[1];
-                            // Cria pixel dummy apenas com nome para busca
                             Pixel chaveBusca = new Pixel(0, nomeBusca, "", 0);
                             Pixel resultado = indice.search(chaveBusca);
                             
                             if (resultado != null) {
                                 System.out.println("Encontrado: " + resultado);
                             } else {
-                                System.out.println("Pixel não encontrado no índice.");
+                                System.out.println("Pixel nao encontrado no indice.");
                             }
                         }
                         break;
@@ -94,7 +89,6 @@ public class Main {
                             String inicio = parts[1];
                             String fim = parts[2];
                             Pixel min = new Pixel(0, inicio, "", 0);
-                            // O "zzzz" garante que busquemos até o final daquele prefixo
                             Pixel max = new Pixel(0, fim + "zzzz", "", 0);
                             
                             System.out.println("--- Pixels entre " + inicio + " e " + fim + " ---");
@@ -103,7 +97,7 @@ public class Main {
                         break;
 
                     case "LIST-INDEX":
-                        System.out.println("--- Índice Global (BST) ---");
+                        System.out.println("--- Indice Global (BST) ---");
                         if (parts.length > 1 && parts[1].equalsIgnoreCase("PREORDER")) {
                             indice.preOrder();
                         } else if (parts.length > 1 && parts[1].equalsIgnoreCase("POSTORDER")) {
@@ -115,7 +109,7 @@ public class Main {
 
                     case "TREE-INFO":
                         System.out.println("Altura: " + indice.height());
-                        System.out.println("Nós: " + indice.countNodes());
+                        System.out.println("Nos: " + indice.countNodes());
                         System.out.println("Folhas: " + indice.countLeaves());
                         break;
 
@@ -127,6 +121,54 @@ public class Main {
                     case "UNIQUE":
                         lista.unique();
                         System.out.println("OK: Duplicatas removidas da lista.");
+                        break;
+
+                    case "REMOVE-COLLECTION":
+                        if (parts.length < 2) {
+                            System.out.println("Uso: REMOVE-COLLECTION <index>");
+                        } else {
+                            int indexRemover = Integer.parseInt(parts[1]);
+                            try {
+                                Pixel removido = lista.removeAt(indexRemover);
+                                System.out.println("OK: " + removido + " removido da colecao.");
+                            } catch (IndexOutOfBoundsException e) {
+                                System.out.println("Erro: Indice fora dos limites.");
+                            }
+                        }
+                        break;
+
+                    case "MOVE":
+                        if (parts.length < 3) {
+                            System.out.println("Uso: MOVE <indice_origem> <indice_destino>");
+                        } else {
+                            int origem = Integer.parseInt(parts[1]);
+                            int destino = Integer.parseInt(parts[2]);
+                            try {
+                                lista.move(origem, destino);
+                                System.out.println("OK: Elemento movido.");
+                            } catch (Exception e) {
+                                System.out.println("Erro ao mover: " + e.getMessage());
+                            }
+                        }
+                        break;
+
+                    case "SLICE":
+                        if (parts.length < 3) {
+                            System.out.println("Uso: SLICE <inicio> <fim>");
+                        } else {
+                            int inicio = Integer.parseInt(parts[1]);
+                            int fim = Integer.parseInt(parts[2]);
+                            try {
+                                ListaEncadeada<Pixel> fatia = lista.slice(inicio, fim);
+                                System.out.println("--- Slice [" + inicio + " a " + fim + "] ---");
+                                int idx = 0;
+                                for (Pixel p : fatia) {
+                                    System.out.println("[" + idx++ + "] " + p);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Erro: Intervalo invalido.");
+                            }
+                        }
                         break;
 
                     case "REMOVE-INDEX":
@@ -144,7 +186,7 @@ public class Main {
                         System.out.println("Comando desconhecido. Digite HELP.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Erro: ID ou Poder devem ser números inteiros.");
+                System.out.println("Erro: ID ou Poder devem ser numeros inteiros.");
             } catch (Exception e) {
                 System.out.println("Erro inesperado: " + e.getMessage());
                 e.printStackTrace(); 
@@ -154,7 +196,7 @@ public class Main {
     }
 
     private static void printHelp() {
-        System.out.println("=== Comandos Disponíveis ===");
+        System.out.println("=== Comandos Disponiveis ===");
         System.out.println("ADD <id> <nome> <raridade> <poder>");
         System.out.println("LIST");
         System.out.println("FIND <nome>");

@@ -37,7 +37,7 @@ public class ListaEncadeada<T> implements Iterable<T> {
     }
 
     public void addAt(int index, T data) {
-        if (index < 0 || index > size) throw new IndexOutOfBoundsException("Índice inválido");
+        if (index < 0 || index > size) throw new IndexOutOfBoundsException("Indice invalido");
         
         if (index == 0) {
             addFirst(data);
@@ -89,7 +89,7 @@ public class ListaEncadeada<T> implements Iterable<T> {
     }
 
     public T removeAt(int index) {
-        if (index < 0 || index >= size) throw new IndexOutOfBoundsException("Índice inválido");
+        if (index < 0 || index >= size) throw new IndexOutOfBoundsException("Indice invalido");
         if (index == 0) return removeFirst();
         if (index == size - 1) return removeLast();
 
@@ -166,7 +166,7 @@ public class ListaEncadeada<T> implements Iterable<T> {
 
     public void move(int from, int to) {
         if (from < 0 || from >= size || to < 0 || to >= size) {
-            throw new IndexOutOfBoundsException("Índices inválidos");
+            throw new IndexOutOfBoundsException("Indices invalidos");
         }
         if (from == to) return;
 
@@ -180,7 +180,7 @@ public class ListaEncadeada<T> implements Iterable<T> {
 
     public ListaEncadeada<T> slice(int start, int end) {
         if (start < 0 || end > size || start > end) {
-            throw new IndexOutOfBoundsException("Intervalo inválido");
+            throw new IndexOutOfBoundsException("Intervalo invalido");
         }
 
         ListaEncadeada<T> subList = new ListaEncadeada<>();
