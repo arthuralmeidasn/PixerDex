@@ -59,8 +59,6 @@ public class ListaEncadeada<T> implements Iterable<T> {
         size++;
     }
 
-    // --- REMOÇÕES ---
-
     public T removeFirst() {
         if (isEmpty()) throw new NoSuchElementException("Lista vazia");
         
@@ -123,6 +121,85 @@ public class ListaEncadeada<T> implements Iterable<T> {
             current = current.getNext();
         }
         return current.getData();
+    }
+    
+    public void reverse() {
+        if (size <= 1) return;
+
+        Node<T> previous = null;
+        Node<T> current = head;
+        Node<T> next = null;
+
+        tail = head;
+
+        while (current != null) {
+            next = current.getNext(); 
+            current.setNext(previous);
+            previous = current;     
+            current = next;
+        }
+        head = previous;
+    }
+
+    public void unique() {
+        if (size <= 1) return;
+
+        Node<T> current = head;
+        
+        while (current != null) {
+            Node<T> runner = current;
+            while (runner.getNext() != null) {
+                if (current.getData().equals(runner.getNext().getData())) {
+                    runner.setNext(runner.getNext().getNext());
+                    size--;
+
+                    if (runner.getNext() == null) {
+                        tail = runner;
+                    }
+                } else {
+                    runner = runner.getNext();
+                }
+            }
+            current = current.getNext();
+        }
+    }
+
+    public void move(int from, int to) {
+        if (from < 0 || from >= size || to < 0 || to >= size) {
+            throw new IndexOutOfBoundsException("Índices inválidos");
+        }
+        if (from == to) return;
+
+        T data = removeAt(from);
+
+        if (from < to) {
+             if (to > size) to = size; 
+        }
+        addAt(to, data);
+    }
+
+    public ListaEncadeada<T> slice(int start, int end) {
+        if (start < 0 || end > size || start > end) {
+            throw new IndexOutOfBoundsException("Intervalo inválido");
+        }
+
+        ListaEncadeada<T> subList = new ListaEncadeada<>();
+        
+        Node<T> current = head;
+        int index = 0;
+
+        while (index < start) {
+            current = current.getNext();
+            index++;
+        }
+
+        while (index < end) {
+            subList.addLast(current.getData());
+            current = current.getNext();
+            index++;
+        }
+
+        return subList;
     }
 
     @Override

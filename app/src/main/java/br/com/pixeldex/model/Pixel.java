@@ -32,6 +32,14 @@ public class Pixel implements Comparable<Pixel> {
     public String toString() {
         return String.format("Pixel(%d, %s, %s, %d)", id, nome, raridade, poder);
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pixel pixel = (Pixel) o;
+        return id == pixel.id;
+    }
 
     @Override
     public int compareTo(Pixel outro) {

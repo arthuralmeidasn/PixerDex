@@ -40,5 +40,9 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass = "br.com.pixeldex.application.Main"
+}
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }
