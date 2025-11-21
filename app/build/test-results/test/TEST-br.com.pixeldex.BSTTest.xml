@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.pixeldex.BSTTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-11-21T23:22:46.752Z" hostname="LAPTOP-O8N9J6PH" time="0.052">
+  <properties/>
+  <testcase name="testRemoveNoComDoisFilhos()" classname="br.com.pixeldex.BSTTest" time="0.039"/>
+  <testcase name="testInsertAndSearch()" classname="br.com.pixeldex.BSTTest" time="0.002"/>
+  <testcase name="testRemoveFolha()" classname="br.com.pixeldex.BSTTest" time="0.001"/>
+  <testcase name="testHeight()" classname="br.com.pixeldex.BSTTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -7,7 +7,6 @@ import br.com.pixeldex.structures.ListaEncadeada;
 
 public class Main {
 
-    // Instâncias estáticas
     private static ListaEncadeada<Pixel> lista = new ListaEncadeada<>();
     private static BST<Pixel> indice = new BST<>();
 

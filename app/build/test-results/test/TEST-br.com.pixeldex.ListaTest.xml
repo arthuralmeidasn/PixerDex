@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.pixeldex.ListaTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-11-21T23:22:46.811Z" hostname="LAPTOP-O8N9J6PH" time="0.015">
+  <properties/>
+  <testcase name="testMove()" classname="br.com.pixeldex.ListaTest" time="0.007"/>
+  <testcase name="testReverse()" classname="br.com.pixeldex.ListaTest" time="0.001"/>
+  <testcase name="testInsercoesEDimensoes()" classname="br.com.pixeldex.ListaTest" time="0.003"/>
+  <testcase name="testUnique()" classname="br.com.pixeldex.ListaTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
