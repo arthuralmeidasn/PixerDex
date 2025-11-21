@@ -48,6 +48,9 @@ public class Pixel implements Comparable<Pixel> {
         if (comparacaoNome != 0) {
             return comparacaoNome;
         }
+        if (this.id == 0 || outro.id == 0) {
+            return 0;
+        }
         return Integer.compare(this.id, outro.id);
     }
 }

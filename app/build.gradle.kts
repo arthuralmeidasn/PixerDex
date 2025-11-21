@@ -16,7 +16,7 @@ dependencies {
 
 application {
     // Define a classe principal da aplicação
-    mainClass = "br.com.pixeldex.main.Main"
+    mainClass = "br.com.pixeldex.application.Main"
 }
 
 tasks.named<Test>("test") {
